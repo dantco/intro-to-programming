@@ -1,13 +1,22 @@
 ﻿namespace Banking.Domain;
 
+public enum BankAccountType { Standard, Gold };
 public class BankAccount
 {
-   
+    public BankAccountType AccountType = BankAccountType.Standard;
     private decimal _balance = 5000; //  "Fields" "class level variables"
     public void Deposit(decimal amountToDeposit)
     {
-        
-        _balance += amountToDeposit;
+        decimal bonus = 0;
+        if(AccountType== BankAccountType.Standard)
+        {
+            bonus = 0;
+        }
+        else
+        {
+            bonus = amountToDeposit * .10m;
+        }
+        _balance += amountToDeposit + bonus;
     }
 
     public decimal GetBalance()
