@@ -1,4 +1,5 @@
 ﻿
+
 namespace Banking.UnitTests;
 
 public class GoldAccountBenefits
@@ -9,10 +10,12 @@ public class GoldAccountBenefits
         var account = new BankAccount();
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
-        var expectedBonus = 50M;
+        var expectedBonus = 10M;
 
         account.Deposit(amountToDeposit);
 
-        Assert.Equal(openingBalance + amountToDeposit + expectedBonus, account.GetBalance());
+        Assert.Equal(openingBalance + amountToDeposit + expectedBonus, 
+            account.GetBalance());
+
     }
 }

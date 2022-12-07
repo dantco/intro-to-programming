@@ -42,7 +42,7 @@ public class OverdraftOfAccount
 
         Assert.Throws<OverdraftException>(() =>
         {
-            account.Withdraw(account.GetBalance() + .01M);
+            account.Withdraw(account.GetBalance() + .51M);
         });
     }
 }

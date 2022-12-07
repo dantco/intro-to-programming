@@ -1,10 +1,4 @@
-﻿
-
-
-
-
-
-namespace Banking.UnitTests;
+﻿namespace Banking.UnitTests;
 
 public class MakingDeposits
 {
@@ -16,7 +10,7 @@ public class MakingDeposits
         // Given
         var account = new BankAccount();
         var openingBalance = account.GetBalance();
-      
+
         // When
         account.Deposit(amountToDeposit);
 
@@ -24,6 +18,6 @@ public class MakingDeposits
         Assert.Equal(amountToDeposit + openingBalance,
             account.GetBalance());
 
-       
+
     }
 }
