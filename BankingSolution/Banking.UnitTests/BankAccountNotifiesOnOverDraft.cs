@@ -1,39 +1,47 @@
 ﻿
 namespace Banking.UnitTests;
 
-public class BankAccountNotifiesOnOverDraft
+public class BankAccountNotifiesOnOverdraft
 {
+
     [Fact]
     public void TheBankAccountNotifiesIfThereIsAnOverdraft()
     {
-        var mockedNotifer = new Mock<INotifyAccountReps>();
-        var account = new BankAccount(new Mock<ICalculateBonuses>().Object, mockedNotifer.Object);
+        var mockedNotifier = new Mock<INotifyAccountReps>();
+        var account = new BankAccount(new Mock<ICalculateBonuses>().Object, mockedNotifier.Object);
         var openingBalance = account.GetBalance();
         var amountToWithdraw = openingBalance + 1M;
 
         try
         {
-            account.Withdraw(amountToWithdraw);
+            account.Withdraw(amountToWithdraw); // Force an overdraft.
         }
-        catch (Exception) { }
+        catch (Exception)
+        {
+            // ignore it
+            
+        }
 
-        mockedNotifer.Verify(m => m.NotifyOfAttemptedOverdraft(account, openingBalance, amountToWithdraw), Times.Once());
+        // Verify the notifier was called
+        mockedNotifier.Verify(m => m.NotifyOfAttemptedOverdraft(account, openingBalance, amountToWithdraw), Times.Once());
+
     }
 
     [Fact]
     public void TheBankAccountDoesNotNotifyIfThereIsNoOverdraft()
     {
-        var mockedNotifer = new Mock<INotifyAccountReps>();
-        var account = new BankAccount(new Mock<ICalculateBonuses>().Object, mockedNotifer.Object);
+        var mockedNotifier = new Mock<INotifyAccountReps>();
+        var account = new BankAccount(new Mock<ICalculateBonuses>().Object, mockedNotifier.Object);
         var openingBalance = account.GetBalance();
         var amountToWithdraw = openingBalance - 1M;
 
-        try
-        {
-            account.Withdraw(amountToWithdraw);
-        }
-        catch (Exception) { }
+            account.Withdraw(amountToWithdraw); // Force an overdraft.
+      
 
-        mockedNotifer.Verify(m => m.NotifyOfAttemptedOverdraft(account, openingBalance, amountToWithdraw), Times.Never());
+
+        // Verify the notifier was called
+        mockedNotifier.Verify(m => m.NotifyOfAttemptedOverdraft(account, openingBalance, amountToWithdraw), Times.Never());
+
+
     }
 }

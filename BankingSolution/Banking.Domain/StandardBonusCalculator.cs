@@ -2,6 +2,7 @@
 {
     public class StandardBonusCalculator : ICalculateBonuses
     {
+        // This is the "Single Point of Truth" for all bonus calculations.
 
 
         public decimal GetBonusForDepositOn(decimal currentBalance, decimal amountOfDeposit)

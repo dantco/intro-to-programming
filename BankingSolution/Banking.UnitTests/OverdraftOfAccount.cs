@@ -1,20 +1,23 @@
 ﻿
 
-using Banking.UnitTests.TestDoubles;
 
 namespace Banking.UnitTests;
 
 public class OverdraftOfAccount
 {
+
     private readonly BankAccount _account;
 
     public OverdraftOfAccount()
     {
-        _account = new BankAccount(new Mock<ICalculateBonuses>().Object, new Mock<INotifyAccountReps>().Object);
+        _account = new BankAccount(new Mock<ICalculateBonuses>().Object,
+            new Mock<INotifyAccountReps>().Object);
     }
+
     [Fact] // Safety Net - an "Invariant"
     public void CanTakeAllTheMoney()
     {
+       
 
         _account.Withdraw(_account.GetBalance());
 
@@ -24,6 +27,7 @@ public class OverdraftOfAccount
     [Fact]
     public void OverdraftDoesNotDecreaseTheBalance()
     {
+       
         var openingBalance = _account.GetBalance();
         var amountToWithDraw = openingBalance + .01M;
 
@@ -44,6 +48,7 @@ public class OverdraftOfAccount
     [Fact]
     public void OverdraftThrowsAnOverdraftException()
     {
+     
 
         Assert.Throws<OverdraftException>(() =>
         {

@@ -12,7 +12,8 @@ public class GoldAccountBenefits
 
         // Given
         var stubbedBonusCalculator = new Mock<ICalculateBonuses>();
-        var account = new BankAccount(stubbedBonusCalculator.Object, new Mock<INotifyAccountReps>().Object);
+        var account = new BankAccount(stubbedBonusCalculator.Object,
+            new Mock<INotifyAccountReps>().Object);
         var openingBalance = account.GetBalance();
         var amountToDeposit = 92.42M;
         var expectedBonus = 42M;
