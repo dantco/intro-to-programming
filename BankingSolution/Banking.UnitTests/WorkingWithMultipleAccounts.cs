@@ -8,8 +8,8 @@ public class WorkingWithMultipleAccounts
     [Fact]
     public void InstancesOfOurAccountAreIsolated()
     {
-        var bobsAccount = new BankAccount(new DummyBonusCalculator());
-        var suesAccount = new BankAccount(new DummyBonusCalculator());
+        var bobsAccount = new BankAccount(new DummyBonusCalculator(), new Mock<INotifyAccountReps>().Object);
+        var suesAccount = new BankAccount(new DummyBonusCalculator(), new Mock<INotifyAccountReps>().Object);
 
         bobsAccount.Deposit(1000M);
         suesAccount.Withdraw(suesAccount.GetBalance());

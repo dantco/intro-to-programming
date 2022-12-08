@@ -13,7 +13,7 @@ public class MakingWithdrawals
     public void MakingWithdrawalsDecreasesBalance(decimal amountToWithdraw)
     {
         // Given
-        var account = new BankAccount(new DummyBonusCalculator());
+        var account = new BankAccount(new DummyBonusCalculator(), new Mock<INotifyAccountReps>().Object);
         var openingBalance = account.GetBalance();
 
         // When

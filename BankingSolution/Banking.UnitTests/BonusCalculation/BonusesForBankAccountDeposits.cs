@@ -13,7 +13,7 @@ public class BonusesForBankAccountDeposits
 
         decimal bonus = bonusCalculator.GetBonusForDepositOn(5000M, 100M);
 
-        Assert.Equal(10M, bonus);
+        Assert.Equal(5M, bonus);
     }
 
     [Fact]

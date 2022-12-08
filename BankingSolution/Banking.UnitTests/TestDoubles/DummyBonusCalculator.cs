@@ -1,4 +1,5 @@
 ﻿
+
 namespace Banking.UnitTests.TestDoubles;
 
 public class DummyBonusCalculator : ICalculateBonuses

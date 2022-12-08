@@ -6,7 +6,7 @@
 
         public decimal GetBonusForDepositOn(decimal currentBalance, decimal amountOfDeposit)
         {
-            return currentBalance >= 5000 ? amountOfDeposit * .10M : 0;
+            return currentBalance >= 5000 ? amountOfDeposit * .05M : 0;
         }
     }
 }

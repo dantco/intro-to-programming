@@ -12,7 +12,7 @@ public class NewAccounts
     {
         // Write the Code You Wish You Had (WTCYWYH)
         // Given
-        var account = new BankAccount(new DummyBonusCalculator());
+        var account = new BankAccount(new Mock<ICalculateBonuses>().Object, new Mock<INotifyAccountReps>().Object);
         // When
         decimal balance = account.GetBalance();
         // Then

@@ -22,8 +22,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Banking.Domain\Banking.Domain.csproj" />
-  </ItemGroup>
-
 </Project>
